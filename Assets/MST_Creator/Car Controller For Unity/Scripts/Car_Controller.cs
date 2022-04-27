@@ -225,12 +225,12 @@ public class Car_Controller : MonoBehaviour
         }
 
         //Applying Maximum Speed
-        if(Car_Speed_In_KPH < Maximum_Speed && Car_Started){ //if the car's current speed is less than the maximum speed
-            //Let car move forward and backward
-            foreach(WheelCollider Wheel in Back_Wheels){
-                Wheel.motorTorque = Input.GetAxis("Vertical") * ((Motor_Torque * 5)/(Back_Wheels.Count + Front_Wheels.Count));
-            }
-        }
+        //if(Car_Speed_In_KPH < Maximum_Speed && Car_Started){ //if the car's current speed is less than the maximum speed
+        //    //Let car move forward and backward
+        //    foreach(WheelCollider Wheel in Back_Wheels){
+        //        Wheel.motorTorque = Input.GetAxis("Vertical") * ((Motor_Torque * 5)/(Back_Wheels.Count + Front_Wheels.Count));
+        //    }
+        //}
 
         if(Car_Speed_In_KPH > Maximum_Speed && Car_Started){ //if the car's current speed is more than the top speed
             //Don't let the car accelerate anymore so it does not exceed the maximum speed
@@ -240,11 +240,11 @@ public class Car_Controller : MonoBehaviour
         }
 
         //Making The Car Turn/Steer
-        if(Car_Started){
-            foreach(WheelCollider Wheel in Front_Wheels){
-                Wheel.steerAngle = Input.GetAxis("Horizontal") * Max_Steer_Angle; //Turn the wheels
-            }
-        }
+        //if(Car_Started){
+        //    foreach(WheelCollider Wheel in Front_Wheels){
+        //        Wheel.steerAngle = Input.GetAxis("Horizontal") * Max_Steer_Angle; //Turn the wheels
+        //    }
+        //}
 
         //Changing speed of the car
         Car_Speed_KPH = Car_Rigidbody.velocity.magnitude * 3.6f; //Calculate car speed in KPH
@@ -584,5 +584,18 @@ public class Car_Controller : MonoBehaviour
                 P.Play();
             }
         }
+    }
+
+    /// <summary>
+    /// -1 to 1
+    /// </summary>
+    /// <param name="angle"></param>
+    public void Set_WheelsAngle(float angle)
+    {
+
+        foreach(WheelCollider Wheel in Front_Wheels){
+            Wheel.steerAngle = angle * Max_Steer_Angle; //Turn the wheels
+        }
+
     }
 }

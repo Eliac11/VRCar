@@ -21547,8 +21547,8 @@ MonoBehaviour:
   Max_Steer_Angle: 30
   BrakeForce: 1000
   Maximum_Speed: 100
-  handBrakeFrictionMultiplier: 2
-  tempo: 0
+  handBrakeFrictionMultiplier: 0
+  tempo: -7.04
   enable_boost: 0
   Boost_Cooldown: 10
   Boost_Amount: 10
