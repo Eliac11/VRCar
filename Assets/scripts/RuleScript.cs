@@ -10,6 +10,7 @@ public class RuleScript : MonoBehaviour
     public CircularDrive drive;
 
     public SteamVR_Action_Boolean GazPress = null;
+    public SteamVR_Action_Boolean GazBackPress = null;
     void Start()
     {
         
@@ -33,6 +34,14 @@ public class RuleScript : MonoBehaviour
             foreach (WheelCollider Wheel in Carcontr.Back_Wheels)
             {
                 Wheel.motorTorque = 0.2f * ((Carcontr.Motor_Torque * 5) / (Carcontr.Back_Wheels.Count + Carcontr.Front_Wheels.Count));
+
+            }
+        }
+        if (GazBackPress.GetStateDown(SteamVR_Input_Sources.Any))
+        {
+            foreach (WheelCollider Wheel in Carcontr.Back_Wheels)
+            {
+                Wheel.motorTorque = -1 * ((Carcontr.Motor_Torque * 5) / (Carcontr.Back_Wheels.Count + Carcontr.Front_Wheels.Count));
 
             }
         }

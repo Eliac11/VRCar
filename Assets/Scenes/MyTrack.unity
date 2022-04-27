@@ -311,26 +311,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1528300243318736776, guid: d489a6b1215682345a43340379ebc60c,
-        type: 3}
-      propertyPath: hoverUpdateInterval
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528300243318736776, guid: d489a6b1215682345a43340379ebc60c,
-        type: 3}
-      propertyPath: useControllerHoverComponent
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528300243318949654, guid: d489a6b1215682345a43340379ebc60c,
-        type: 3}
-      propertyPath: hoverUpdateInterval
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528300243318949654, guid: d489a6b1215682345a43340379ebc60c,
-        type: 3}
-      propertyPath: useControllerHoverComponent
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8543214239874089223, guid: d489a6b1215682345a43340379ebc60c,
         type: 3}
       propertyPath: m_Name
