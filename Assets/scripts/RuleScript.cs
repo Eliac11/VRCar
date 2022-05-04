@@ -8,14 +8,11 @@ public class RuleScript : MonoBehaviour
     public Car_Controller Carcontr;
 
     public CircularDrive drive;
+    public Transform RuleBody;
+
 
     public SteamVR_Action_Boolean GazPress = null;
     public SteamVR_Action_Boolean GazBackPress = null;
-    void Start()
-    {
-        
-    }
-
 
 
     // Update is called once per frame
@@ -24,7 +21,8 @@ public class RuleScript : MonoBehaviour
         
         Carcontr.Set_WheelsAngle(Mathf.Clamp( drive.outAngle/45,-1,1));
 
-        
+        RuleBody.eulerAngles = new Vector3(RuleBody.eulerAngles.x, 0, drive.outAngle);
+
     }
 
     public void Update()

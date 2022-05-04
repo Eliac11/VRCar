@@ -18,8 +18,8 @@ TagManager:
   - Pointer
   - Not_In_Minimap
   - Minimap_Layer
-  - 
-  - 
+  - CarmainCollider
+  - Player
   - 
   - 
   - 
