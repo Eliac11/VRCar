@@ -19,15 +19,24 @@ public class RuleScript : MonoBehaviour
     public void HandHoverUpdate(Hand hand)
     {
         
-        Carcontr.Set_WheelsAngle(Mathf.Clamp( drive.outAngle/45,-1,1));
+        Carcontr.Set_WheelsAngle(Mathf.Clamp( drive.outAngle/450,-1,1));
 
-        RuleBody.eulerAngles = new Vector3(RuleBody.eulerAngles.x, 0, drive.outAngle);
+        RuleBody.localEulerAngles = new Vector3(RuleBody.localEulerAngles.x, 0, drive.outAngle);
 
     }
 
     public void Update()
     {
-        if (GazPress.GetStateDown(SteamVR_Input_Sources.Any))
+        if (GazPress.GetState(SteamVR_Input_Sources.Any))
+        {
+            
+            foreach (WheelCollider Wheel in Carcontr.Back_Wheels)
+            {
+                Wheel.motorTorque = -0.2f * ((Carcontr.Motor_Torque * 5) / (Carcontr.Back_Wheels.Count + Carcontr.Front_Wheels.Count));
+
+            }
+        }
+        else if (GazBackPress.GetState(SteamVR_Input_Sources.Any))
         {
             foreach (WheelCollider Wheel in Carcontr.Back_Wheels)
             {
@@ -35,13 +44,14 @@ public class RuleScript : MonoBehaviour
 
             }
         }
-        if (GazBackPress.GetStateDown(SteamVR_Input_Sources.Any))
+        else
         {
             foreach (WheelCollider Wheel in Carcontr.Back_Wheels)
             {
-                Wheel.motorTorque = -1 * ((Carcontr.Motor_Torque * 5) / (Carcontr.Back_Wheels.Count + Carcontr.Front_Wheels.Count));
+                Wheel.motorTorque = 0;
 
             }
         }
+
     }
 }
