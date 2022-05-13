@@ -181,9 +181,25 @@ namespace Valve.VR.InteractionSystem
 			UpdateAll();
 		}
 
+		void MyPEREUpdate()
+        {
+			worldPlaneNormal = new Vector3(0.0f, 0.0f, 0.0f);
+			worldPlaneNormal[(int)axisOfRotation] = 1.0f;
+			worldPlaneNormal = transform.parent.localToWorldMatrix.MultiplyVector(worldPlaneNormal).normalized;
+			start = Quaternion.AngleAxis(transform.localEulerAngles[(int)axisOfRotation], localPlaneNormal);
+			localPlaneNormal = worldPlaneNormal;
 
-		//-------------------------------------------------
-		void OnDisable()
+
+		}
+        private void Update()
+        {
+			MyPEREUpdate();
+
+		}
+
+
+        //-------------------------------------------------
+        void OnDisable()
 		{
 			if ( handHoverLocked )
 			{
@@ -435,6 +451,7 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		private void UpdateAll()
 		{
+			//worldPlaneNormal = transform.parent.localToWorldMatrix.MultiplyVector(worldPlaneNormal).normalized;
 			UpdateLinearMapping();
 			UpdateGameObject();
 			UpdateDebugText();

@@ -393,6 +393,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 799628605631123889, guid: 2048e10bafab5724c893c23013887cb1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605378897282130754, guid: 2048e10bafab5724c893c23013887cb1,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5862894577502549775, guid: 2048e10bafab5724c893c23013887cb1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 7239954221518019017, guid: 2048e10bafab5724c893c23013887cb1,
         type: 3}
       propertyPath: m_Name
