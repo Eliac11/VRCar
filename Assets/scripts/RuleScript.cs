@@ -14,6 +14,8 @@ public class RuleScript : MonoBehaviour
     public SteamVR_Action_Boolean GazPress = null;
     public SteamVR_Action_Boolean GazBackPress = null;
 
+    public bool playerInCar = false;
+
 
     // Update is called once per frame
     public void HandHoverUpdate(Hand hand)
@@ -27,31 +29,34 @@ public class RuleScript : MonoBehaviour
 
     public void Update()
     {
-        if (GazPress.GetState(SteamVR_Input_Sources.Any))
+        if (playerInCar)
         {
-            
-            foreach (WheelCollider Wheel in Carcontr.Back_Wheels)
+            if (GazPress.GetState(SteamVR_Input_Sources.Any))
             {
-                Wheel.motorTorque = -0.2f * ((Carcontr.Motor_Torque * 5) / (Carcontr.Back_Wheels.Count + Carcontr.Front_Wheels.Count));
 
+                foreach (WheelCollider Wheel in Carcontr.Back_Wheels)
+                {
+                    Wheel.motorTorque = -0.2f * ((Carcontr.Motor_Torque * 5) / (Carcontr.Back_Wheels.Count + Carcontr.Front_Wheels.Count));
+
+                }
             }
-        }
-        else if (GazBackPress.GetState(SteamVR_Input_Sources.Any))
-        {
-            foreach (WheelCollider Wheel in Carcontr.Back_Wheels)
+            else if (GazBackPress.GetState(SteamVR_Input_Sources.Any))
             {
-                Wheel.motorTorque = 0.2f * ((Carcontr.Motor_Torque * 5) / (Carcontr.Back_Wheels.Count + Carcontr.Front_Wheels.Count));
+                foreach (WheelCollider Wheel in Carcontr.Back_Wheels)
+                {
+                    Wheel.motorTorque = 0.2f * ((Carcontr.Motor_Torque * 5) / (Carcontr.Back_Wheels.Count + Carcontr.Front_Wheels.Count));
 
+                }
             }
-        }
-        else
-        {
-            foreach (WheelCollider Wheel in Carcontr.Back_Wheels)
+            else
             {
-                Wheel.motorTorque = 0;
+                foreach (WheelCollider Wheel in Carcontr.Back_Wheels)
+                {
+                    Wheel.motorTorque = 0;
 
+                }
             }
-        }
 
+        }
     }
 }
