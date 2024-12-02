@@ -7,7 +7,7 @@ public class RuleScript : MonoBehaviour
 {
     public Car_Controller Carcontr;
 
-    public CircularDrive drive;
+    public LinearMapping drive;
     public Transform RuleBody;
 
 
@@ -15,22 +15,18 @@ public class RuleScript : MonoBehaviour
     public SteamVR_Action_Boolean GazBackPress = null;
 
     public bool playerInCar = false;
+    public float d = 0.5f;
 
 
     // Update is called once per frame
-    public void HandHoverUpdate(Hand hand)
-    {
-        
-        Carcontr.Set_WheelsAngle(Mathf.Clamp( drive.outAngle/450,-1,1));
-
-        RuleBody.localEulerAngles = new Vector3(RuleBody.localEulerAngles.x, 0, drive.outAngle);
-
-    }
-
     public void Update()
     {
         if (playerInCar)
         {
+            Carcontr.Set_WheelsAngle((drive.value - d) * 2f);
+
+            RuleBody.localEulerAngles = new Vector3(RuleBody.localEulerAngles.x, 0, (drive.value - d) * 2f * 420);
+
             if (GazPress.GetState(SteamVR_Input_Sources.Any))
             {
 
